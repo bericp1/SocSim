@@ -1,2 +1,4 @@
-# Phillips_CSCI2270_FinalProject
-Final project for CSCI 2270
+# CSCI 2270 Final Project
+
+## Brandon Eric Phillips
+
