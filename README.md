@@ -2,15 +2,22 @@
 
 **Brandon Eric Phillips**
 
-##  IMDB: The Missing Link
+##  SocSim
 
-...is a trivia game using data from the Internet Movie Database where the user is given information about a(n) actor,
-actress, movie, director, etc and they must guess who it is. The data is exported from IMDB into text files, which
-are parsed into a graph. The graph will consist of nodes that represent some sort of entity such as an actor, actress,
-movie, director, etc. and edges that represent some sort of relationship between entities such as directed, acted in,
-etc.
+...simulates the spread of different kinds of information through a defined community. Using a graph to represent the
+community, nodes within the graph represent entities such as people and edges within the graph are directed and
+represent the relationships between these people. Each relationship has a type and each type of relationship has
+defined weights that represent the possibility a specific type of information will be shared between the two people
+that the relationship specifically connects. SocSim generates the community graph from static JSON resources files that
+define all people, their relationships, etc. It then asks for a message from the user (and some important meta data
+regarding the message) and sends the message through the graph. Stateful information for individual messages such as who
+has heard the message, if what they heard differed from the original messsage (e.g. the telephone game), etc. is stored
+in a hash table alongside the message, whose data will be formatted and outputted once the message has made its
+go-around.
 
 ### Dependencies
+
+ * a json library for C++ (TBD)
 
 ### System Requirements
 
@@ -30,11 +37,8 @@ Binary outputted as `./build/project`
 
 ### TODO
 
- * Download IMDB text files
- * Format files for easier consumption
- * Parse all text files into a graph
- * Based on memory consumption/processing time, only use a subset of IMDB data
- * Randomly select a node in the graph
- * Show `n` adjacent nodes (`n` varies with difficulty)
- * Show 4 to 5 possible answers (multiple choice)
- * Score system
+ * Make up data (JSON res files)
+ * Select a JSON lib
+ * Build graph classes for representing nodes and relationships
+ * Construct graph from imported data
+ * I/O controller
