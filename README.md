@@ -17,17 +17,42 @@ go-around.
 
 ### Dependencies
 
- * a json library for C++ (TBD)
+ * [rapidjson](https://github.com/miloyip/rapidjson/)
+    * MIT License
+    * Header-only library
+    * Bundled with project in [include/rapidjson](include/rapidjson)
 
 ### System Requirements
 
- * cmake
+ * Linux
+ * cmake (3.1+)
 
 ### Building
 
-    $ cmake --build ./build --target all
+Either of the following methods will generate the application as a binary `./bin/socsim`.
+
+#### The easy way: (**TODO**)
+
+    $ ./build.sh
     
-Binary outputted as `./build/project`
+This build script cleans up `./build`, runs cmake and make, and copies the executable to `./bin`. Ensure you have
+cmake 3.1+ already installed or this script will fail. If you get a permission error, ensure the file has executable
+permission:
+
+    $ chmod +x ./build.sh
+    
+You  may need to use `sudo` with the above commands on some distros.
+
+### The hard way:
+
+    $ rm -rf build bin
+    $ mkdir build bin
+    $ cd build
+    $ cmake ../
+    $ make
+    $ cp socsim ../bin/
+    
+This is essentially what the automated build script does.
 
 ### Group Members
 
