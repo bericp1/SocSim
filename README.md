@@ -20,18 +20,19 @@ go-around.
  * [rapidjson](https://github.com/miloyip/rapidjson/)
     * MIT License
     * Header-only library
-    * Bundled with project in [include/rapidjson](include/rapidjson)
+    * Bundled with SocSim in [./include/rapidjson](include/rapidjson) per the permission and instruction of the project
+      itself
 
 ### System Requirements
 
- * Linux
+ * Linux (probably)
  * cmake (3.1+)
 
 ### Building
 
 Either of the following methods will generate the application as a binary `./bin/socsim`.
 
-#### The easy way: (**TODO**)
+#### The easy way:
 
     $ ./build.sh
     
@@ -41,7 +42,10 @@ permission:
 
     $ chmod +x ./build.sh
     
-You  may need to use `sudo` with the above commands on some distros.
+You  may need to use `sudo` with the above `chmod` command on some distros.
+
+**Hint:** there is also a `./clean.sh` files that cleans up after `./build.sh`. `./build.sh` executes `./clean.sh`
+initially before compilation
 
 ### The hard way:
 
@@ -52,7 +56,7 @@ You  may need to use `sudo` with the above commands on some distros.
     $ make
     $ cp socsim ../bin/
     
-This is essentially what the automated build script does.
+This is essentially what the automated build script(s) do(es).
 
 ### Group Members
 
