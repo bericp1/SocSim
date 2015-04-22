@@ -63,7 +63,7 @@ This is essentially what the automated build script(s) do(es).
 
 ### Data Generator
 
-Data is stored in `./res/` in two files: `people.json` and `relationships.json`. This is the data loaded into the graph
+Data is stored in `./res/` in multiple JSON files. This is the data loaded into the graph
 initially. This data can be edited manually or generated using a simple HTML/CSS/JavaScript tool included with SocSim.
 It relies on AJAX and so must be run in a web server. If you have python installed, you can use the included script
 to fire up python's built in HTTP server in the res directory:
@@ -81,7 +81,24 @@ Otherwise, as long as `./res/` is reachable by a web server, it should still wor
 ### TODO
 
  * Make up data (JSON res files)
- * Select a JSON lib
- * Build graph classes for representing nodes and relationships
+ * ~~Select a JSON lib~~
+ * Classes
+    * **Community**: graph;
+    * **Person**: node; a person with a name and occupation
+        * name; string
+        * occupation; string
+    * **Relationship**: edge;
+        * type; string (an existing `RelationshipType` label)
+        * from; string (name of `Person`)
+        * to; string (name of `Person`)
+    * **RelationshipType**: qualifies and quantifies a type of relationship
+        * label; string (describes type of relationship; e.g. "married to" or "teaches" or "is a friend of")
+        * prob; map/hashtable<string,float> (holds probabilities for the transfer of different message types)
+    * **MessageType**: quantifies a type of message
+        * label; string (describes the type of message; e.g. "rumor" or "news")
+        * prob; float (the default probability for transfer for messages of this type)
+    * **Message**
+    * **Parcel**: holds a `Message` and a hashtable of data about who has heard the message
  * Construct graph from imported data
  * I/O controller
+ * Build hashtable on Message object to store traversal data (seperate tracker class? e.g. "Parcel")

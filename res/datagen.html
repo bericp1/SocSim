@@ -140,8 +140,8 @@
                     <h2>New Message Type</h2>
                     <form class="well">
                         <div class="form-group">
-                            <label>Name/ID</label>
-                            <input name="id" type="text" class="form-control" placeholder="Name/ID">
+                            <label>Label</label>
+                            <input name="label" type="text" class="form-control" placeholder="Label (e.g. 'rumor')">
                         </div>
                         <div class="form-group">
                             <label>Default Weight</label>
@@ -320,12 +320,12 @@
 
                 return ret;
             },
-            genMessageTypeField: function(id, prob) {
+            genMessageTypeField: function(label, prob) {
                 var $field = templates.$messageTypeField.clone();
-                $field.data('id', id);
+                $field.data('label', label);
                 $field.data('prob', prob);
-                $field.find('.prob-type').text(id);
-                $field.find('.prob-val').val(prob).attr('name','prob[' + id + ']');
+                $field.find('.prob-type').text(label);
+                $field.find('.prob-val').val(prob).attr('name','prob[' + label + ']');
                 return $field;
             },
             findRow: function(table, key, value){
@@ -416,18 +416,18 @@
                 var $probsContainer = sections.$relationshipType.find('.prob-groups'),
                         processed = [];
                 $probsContainer.children().each(function() {
-                    var $field = $(this), id = $field.data('id');
-                    var results = data.message_types.filter(function(elem) {return elem.id==id;});
+                    var $field = $(this), label = $field.data('label');
+                    var results = data.message_types.filter(function(elem) {return elem.label==label;});
                     if(results.length == 0) {
                         $field.remove();
                     } else {
                         $field.find('.prob-val').val($field.data('prob'));
                     }
-                    processed.push(id);
+                    processed.push(label);
                 });
                 $.each(data.message_types, function(){
-                    if($.inArray(this.id, processed) < 0) {
-                        $probsContainer.append(utils.genMessageTypeField(this.id, this.prob));
+                    if($.inArray(this.label, processed) < 0) {
+                        $probsContainer.append(utils.genMessageTypeField(this.label, this.prob));
                     }
                 });
             }
@@ -515,7 +515,7 @@
                             tables.message_types = tables.message_types.DataTable({
                                 data: data.message_types,
                                 columns: [
-                                    {data: "id"},
+                                    {data: "label"},
                                     {data: "prob"},
                                     utils.genButtonCol([
                                         {cls:'edit', text:'./', mood:'warning'},
@@ -562,12 +562,12 @@
 
                     handlerFactories.form('relationships', ['id', 'type', 'from', 'to'], 'id')(event);
                 });
-                sections.$messageType.on('submit', 'form', handlerFactories.form('message_types', ['id', 'prob'], 'id', ['prob']));
+                sections.$messageType.on('submit', 'form', handlerFactories.form('message_types', ['label', 'prob'], 'label', ['prob']));
                 sections.$relationshipType.on('submit', 'form', handlerFactories.form('relationship_types', ['label', 'prob'], 'label', ['prob']));
 
                 sections.$people.on('click', 'button.delete', handlerFactories.deleteButton('people', 'name'));
                 sections.$relationships.on('click', 'button.delete', handlerFactories.deleteButton('relationships', 'id'));
-                sections.$messageTypes.on('click', 'button.delete', handlerFactories.deleteButton('message_types', 'id'));
+                sections.$messageTypes.on('click', 'button.delete', handlerFactories.deleteButton('message_types', 'label'));
                 sections.$relationshipTypes.on('click', 'button.delete', handlerFactories.deleteButton('relationship_types', 'label'));
 
                 sections.$relationship.on('click', 'button.switch', function(event){
