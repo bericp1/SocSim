@@ -27,6 +27,7 @@ go-around.
 
  * Linux (probably)
  * cmake (3.1+)
+ * python (for the [Data Generator](#data-generator); see below)
 
 ### Building
 
@@ -34,20 +35,22 @@ Either of the following methods will generate the application as a binary `./bin
 
 #### The easy way:
 
-    $ ./build.sh
+    $ ./scripts/build.sh
     
 This build script cleans up `./build`, runs cmake and make, and copies the executable to `./bin`. Ensure you have
 cmake 3.1+ already installed or this script will fail. If you get a permission error, ensure the file has executable
 permission:
 
-    $ chmod +x ./build.sh
+    $ chmod +x ./scripts/*.sh
     
 You  may need to use `sudo` with the above `chmod` command on some distros.
 
-**Hint:** there is also a `./clean.sh` files that cleans up after `./build.sh`. `./build.sh` executes `./clean.sh`
-initially before compilation
+**Hint:** there is also a `./scripts/clean.sh` files that cleans up after `./scripts/build.sh`. `./scripts/build.sh`
+executes `./scripts/clean.sh` initially before compilation
 
-### The hard way:
+**Note:** Both scripts assume CWD is the project root directory (*NOT* `./scripts`)
+
+#### The hard way:
 
     $ rm -rf build bin
     $ mkdir build bin
@@ -57,6 +60,17 @@ initially before compilation
     $ cp socsim ../bin/
     
 This is essentially what the automated build script(s) do(es).
+
+### Data Generator
+
+Data is stored in `./res/` in two files: `people.json` and `relationships.json`. This is the data loaded into the graph
+initially. This data can be edited manually or generated using a simple HTML/CSS/JavaScript tool included with SocSim.
+It relies on AJAX and so must be run in a web server. If you have python installed, you can use the included script
+to fire up python's built in HTTP server in the res directory:
+
+    $ ./scripts/datagen.sh
+    
+Otherwise, as long as `./res/` is reachable by a web server, it should still work.
 
 ### Group Members
 

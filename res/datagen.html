@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>SocSim Data Generator</title>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="http://cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.6/js/jquery.dataTables.min.js"></script>
+    <style>
+        /* Space out content a bit */
+        body {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .row h2 {margin-bottom: 20px;}
+
+        /* Custom page header */
+        .header {
+            padding-right: 15px;
+            padding-left: 15px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        /* Make the masthead heading the same height as the navigation */
+        .header h3, .header p {
+            margin-top: 0;
+            margin-bottom: 0;
+            line-height: 40px;
+        }
+
+        .error-section {font-size: 2em;}
+
+        .output textarea {height: 500px;}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header row clearfix">
+        <h3 class="text-muted pull-left">SocSim Data Generator</h3>
+        <p class="pull-right">
+            Must be ran off a web server since AJAX is used to fetch existing data, which must be in the same directory.
+        </p>
+    </div>
+
+    <div class="row error-section error-not-found">
+        <div class="col-lg-8 col-lg-offset-2 text-danger text-center">
+            <p>
+                Could not load one or more files. Make sure all files in res exist and that datagen.html is in the same
+                folder.
+            </p>
+        </div>
+    </div>
+
+    <div class="row loading">
+        <div class="text-center col-lg-12">
+            <h2 class="text-center">Loading...</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-lg-12 message-types">
+                    <h2>Message Types</h2>
+                    <div class="well">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Name/ID</th>
+                                <th>Default Prob</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 relationship-types">
+                    <h2>Relationship Types</h2>
+                    <div class="well">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Label</th>
+                                <th>Probs</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 people">
+                    <h2>People</h2>
+                    <p>
+                        Use the buttons in the right hand columns to fill in a selected person into a specific position in the
+                        new relationship form below.
+                    </p>
+                    <div class="well">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Occupation</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 relationships">
+                    <h2>Relationships</h2>
+                    <div class="well">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-lg-12 new-message-type">
+                    <h2>New Message Type</h2>
+                    <form class="well">
+                        <div class="form-group">
+                            <label>Name/ID</label>
+                            <input name="id" type="text" class="form-control" placeholder="Name/ID">
+                        </div>
+                        <div class="form-group">
+                            <label>Default Weight</label>
+                            <input name="prob" type="number" step="0.01" min="0" max="1" class="form-control" placeholder="Default Weight">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 new-relationship-type">
+                    <h2>New Relationship Type</h2>
+                    <form class="well">
+                        <div class="form-group">
+                            <label>Label</label>
+                            <input name="label" type="text" class="form-control" placeholder="Label (e.g. married to, parent of, teaches, etc.)">
+                        </div>
+                        <div class="form-group">
+                            <label>Message Probabilities</label>
+                            <div class="prob-groups">
+                                <div class="input-group prob-template">
+                                    <div class="input-group-addon prob-type"></div>
+                                    <input name="prob[]" type="number" step="0.01" min="0" max="1" class="form-control prob-val" placeholder="probability (e.g. 0.5)">
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 new-person">
+                    <h2>New Person</h2>
+                    <form class="well">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input name="name" type="text" class="form-control" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Occupation</label>
+                            <input name="occupation" type="text" class="form-control" placeholder="Occupation">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 new-relationship">
+                    <h2>New Relationship</h2>
+                    <form class="well">
+                        <input type="hidden" name="id">
+                        <div class="form-group">
+                            <label>From (name)</label>
+                            <select name="from" data-collection="people" data-value-key="name" data-text-key="name"></select>
+                        </div>
+                        <div class="form-group">
+                            <label>Type</label>
+                            <select name="type" data-collection="relationship_types" data-value-key="label" data-text-key="label"></select>
+                            <button class="switch">switch</button>
+                        </div>
+                        <div class="form-group">
+                            <label>To (name)</label>
+                            <select name="to" data-collection="people" data-value-key="name" data-text-key="name"></select>
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 download">
+            <h2>Download</h2>
+            <div class="well text-center">
+                <button class="btn btn-lg btn-primary btn-block dl-people"><code>people.json</code></button>
+                <button class="btn btn-lg btn-primary btn-block dl-relationships"><code>relationships.json</code></button>
+                <button class="btn btn-lg btn-primary btn-block dl-message-types"><code>message_types.json</code></button>
+                <button class="btn btn-lg btn-primary btn-block dl-relationship-types"><code>relationship_types.json</code></button>
+            </div>
+        </div>
+        <div class="col-lg-8 output">
+            <h2>Output</h2>
+            <div class="well text-center">
+                <textarea class="form-control"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="row marketing">
+        <!--<div class="col-lg-6">
+            <h4>Subheading</h4>
+            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+            <h4>Subheading</h4>
+            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+            <h4>Subheading</h4>
+            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        </div>-->
+    </div>
+</div>
+
+<script type="text/javascript">
+    (function($) {
+
+        var data = {
+            people: [],
+            relationships: [],
+            message_types: [],
+            relationship_types: []
+        };
+
+        var $document = $(document);
+
+        var sections = {
+            $loading: $('.loading'),
+            $people: $('.people'),
+            $relationships: $('.relationships'),
+            $messageTypes: $('.message-types'),
+            $relationshipTypes: $('.relationship-types'),
+            $person: $('.new-person'),
+            $relationship: $('.new-relationship'),
+            $messageType: $('.new-message-type'),
+            $relationshipType: $('.new-relationship-type'),
+            $download: $('.download'),
+            $output: $('.output'),
+            $notFoundError: $('.not-found-error'),
+
+            $errors: $('.error-section'),
+
+            $all: $()
+        };
+
+        $.each(sections, function(key) {
+            if(key != '$all')
+                sections.$all = sections.$all.add(this);
+        });
+
+        var templates = {
+            $messageTypeField: sections.$relationshipType.find('.prob-template').detach()
+        };
+
+        var tables = {
+            people: sections.$people.find('table'),
+            relationships: sections.$relationships.find('table'),
+            message_types: sections.$messageTypes.find('table'),
+            relationship_types: sections.$relationshipTypes.find('table')
+        };
+
+        var utils = {
+            genButtonCol: function(a, b, c, d){
+                var buttons = [], width = false;
+                if(typeof a == 'string') {
+                    var button = {cls:a};
+                    if(typeof b == 'string') button.text = b;
+                    if(typeof c == 'string') button.mood = c;
+                    if(typeof d == 'number') width = d;
+                    buttons.push(button);
+                } else if($.isArray(a)) {
+                    buttons = a;
+                    if(typeof b == 'number') width = b;
+                }
+                var ret = {
+                    "data": null,
+                    "defaultContent": "",
+                    "searchable": false,
+                    "sortable": false
+                };
+                if(typeof width == 'number') ret.width = width;
+                $.each(buttons, function(idx, button){
+                    if(typeof button.mood == 'string') button.cls += ' btn btn-xs btn-' + button.mood;
+                    else button.cls += ' btn btn-xs btn-default';
+                    ret.defaultContent += '<button class="' + button.cls + '">' + button.text + '</button>';
+                });
+
+                return ret;
+            },
+            genMessageTypeField: function(id, prob) {
+                var $field = templates.$messageTypeField.clone();
+                $field.data('id', id);
+                $field.data('prob', prob);
+                $field.find('.prob-type').text(id);
+                $field.find('.prob-val').val(prob).attr('name','prob[' + id + ']');
+                return $field;
+            },
+            findRow: function(table, key, value){
+                return tables[table].row(function(idx, data){
+                    return data[key] == value;
+                });
+            },
+            addFromForm: function(collection, formData, required, unq, numerical){
+                if(!$.isArray(required)) required = [];
+                if(!$.isArray(numerical)) numerical = [];
+
+                var obj = {};
+
+                $.each(formData, function(){
+                    var matches = this.name.match(/\[[A-Za-z0-9\-_\$]+\]/gi);
+                    if(!$.isArray(matches) || matches.length == 0) {
+                        obj[this.name] = ($.inArray(this.name, numerical) >= 0) ? parseFloat(this.value) : this.value;
+                    } else {
+                        var key = this.name.slice(0, this.name.indexOf(matches[0]));
+                        var deepkey = matches[0].slice(1,matches[0].length-1);
+                        if(typeof obj[key] !== 'object' || $.isArray(obj[key])){
+                            obj[key] = {};
+                        }
+                        obj[key][deepkey]=(($.inArray(key, numerical) >= 0) ? parseFloat(this.value) : this.value);
+                    }
+                });
+
+                var okay = true;
+                $.each(required, function(){
+                    if(typeof obj[this.toString()] == 'undefined' || !obj[this.toString()]) okay = false;
+                });
+
+                if(okay) {
+                    var existing = [];
+                    if(typeof unq == 'string') {
+                        existing = data[collection].filter(function(elem, idx, arr){
+                            if(elem[unq] == obj[unq]) {
+                                data[collection][idx] = obj;
+                                utils.findRow(collection, unq, obj[unq]).data(obj);
+                                return true;
+                            } else return false;
+                        });
+
+                    }
+                    if(existing.length == 0) {
+                        data[collection].push(obj);
+                        tables[collection].row.add(obj).draw();
+                    }
+                    return true;
+                } else {
+                    alert("Bad data");
+                    return false;
+                }
+            },
+            remove: function(collection, sel, unq) {
+                var row = tables[collection].row(sel), rowData = row.data();
+                row.remove().draw();
+                data[collection] = data[collection].filter(function(elem, idx){
+                    return elem[unq] != rowData[unq];
+                });
+            },
+            edit: function(collection, sel, $form) {
+                var row = tables[collection].row(sel), rowData = row.data();
+                $form[0].reset();
+                $.each(rowData, function(key, val){
+                    if(typeof val == 'object') {
+                        $.each(val, function(subfield, subval) {
+                            $form.find("[name='" + key + "[" + subfield + "]']").val(subval);
+                        })
+                    } else {
+                        $form.find("[name='" + key + "']").val(val);
+                    }
+                });
+            },
+            download: function(collection) {
+                var dataToDownload = data[collection];
+                if(collection = 'relationships') dataToDownload = $.each(dataToDownload, function(idx, elem){delete elem.id; dataToDownload[idx] = elem;});
+                sections.$output.find('textarea').val(JSON.stringify(dataToDownload));
+            },
+            refresh: function() {
+                sections.$relationship.find('select').each(function(){
+                    var $sel = $(this);
+                    $sel.children().remove();
+                    $.each(data[$sel.data('collection')], function(){
+                        $sel.append('<option value="' + this[$sel.data('value-key')] + '">' + this[$sel.data('text-key')] + '</option>');
+                    });
+                });
+                var $probsContainer = sections.$relationshipType.find('.prob-groups'),
+                        processed = [];
+                $probsContainer.children().each(function() {
+                    var $field = $(this), id = $field.data('id');
+                    var results = data.message_types.filter(function(elem) {return elem.id==id;});
+                    if(results.length == 0) {
+                        $field.remove();
+                    } else {
+                        $field.find('.prob-val').val($field.data('prob'));
+                    }
+                    processed.push(id);
+                });
+                $.each(data.message_types, function(){
+                    if($.inArray(this.id, processed) < 0) {
+                        $probsContainer.append(utils.genMessageTypeField(this.id, this.prob));
+                    }
+                });
+            }
+        };
+
+        var handlerFactories = {
+            form: function(collection, required, unq, numerical){
+                return function(event){
+                    if(!utils.addFromForm(collection, $(event.target).serializeArray(), required, unq, numerical)){
+                        event.stopPropagation();
+                        event.preventDefault();
+                    }
+                };
+            },
+            deleteButton: function(collection, unq) {
+                return function(event) {
+                    utils.remove(collection, $(event.target).closest('tr'), unq);
+                    utils.refresh();
+                };
+            },
+            editButton: function(collection, $form) {
+                return function(event) {
+                    utils.edit(collection, $(event.target).closest('tr'), $form);
+                };
+            },
+            dlButton: function(collection) {
+                return function(event) {
+                    utils.download(collection);
+                }
+            }
+        };
+
+        var stages = {
+            load: function() {
+                sections.$all.hide();
+                sections.$loading.show();
+
+                $.when(
+                        $.get('./people.json'),
+                        $.get('./relationships.json'),
+                        $.get('./message_types.json'),
+                        $.get('./relationship_types.json')
+                ).then(
+                        function(peopleResp, relationshipsResp, messageTypesResp, relationshipTypesResp) {
+                            data.people = peopleResp[0];
+                            data.relationships = relationshipsResp[0];
+                            data.message_types = messageTypesResp[0];
+                            data.relationship_types = relationshipTypesResp[0];
+
+                            sections.$all.show();
+                            sections.$loading.hide();
+                            sections.$errors.hide();
+
+                            tables.people = tables.people.DataTable({
+                                data: data.people,
+                                columns: [
+                                    {data: "name"},
+                                    {data: "occupation"},
+                                    utils.genButtonCol([
+                                        {cls:'from', text:'From'},
+                                        {cls:'to', text: 'To'},
+                                        {cls:'edit', text:'./', mood:'warning'},
+                                        {cls:'delete', text:'X', mood:'danger'}
+                                    ], 100)
+                                ]
+                            });
+
+                            $.each(data.relationships, function(idx){
+                                data.relationships[idx].id = this.from + ':' + this.to;
+                            });
+
+                            tables.relationships = tables.relationships.DataTable({
+                                data: data.relationships,
+                                columns: [
+                                    {data: "type"},
+                                    {data: "from"},
+                                    {data: "to"},
+                                    utils.genButtonCol([
+                                        {cls:'edit', text:'./', mood:'warning'},
+                                        {cls:'delete', text:'X', mood:'danger'}
+                                    ])
+                                ]
+                            });
+
+                            tables.message_types = tables.message_types.DataTable({
+                                data: data.message_types,
+                                columns: [
+                                    {data: "id"},
+                                    {data: "prob"},
+                                    utils.genButtonCol([
+                                        {cls:'edit', text:'./', mood:'warning'},
+                                        {cls:'delete', text:'X', mood:'danger'}
+                                    ])
+                                ]
+                            });
+
+                            tables.relationship_types = tables.relationship_types.DataTable({
+                                data: data.relationship_types,
+                                columns: [
+                                    {data: "label"},
+                                    {data: "prob", render:JSON.stringify},
+                                    utils.genButtonCol([
+                                        {cls:'edit', text:'./', mood:'warning'},
+                                        {cls:'delete', text:'X', mood:'danger'}
+                                    ])
+                                ]
+                            });
+
+                            stages.wireUp();
+                            utils.refresh();
+                        },
+                        function() {
+                            console.error(arguments);
+                            sections.$all.hide();
+                            sections.$notFoundError.show();
+                        }
+                );
+            },
+            wireUp: function() {
+                $document.on('submit', 'form', function(event){
+                    event.target.reset();
+                    utils.refresh();
+                    event.preventDefault();
+                });
+                sections.$person.on('submit', 'form', handlerFactories.form('people', ['name', 'occupation'], 'name'));
+                sections.$relationship.on('submit', 'form', function(event) {
+                    var $form = $(event.target),
+                            $id = $form.find("[name='id']"),
+                            $from = $form.find("[name='from']"),
+                            $to = $form.find("[name='to']");
+                    $id.val($from.val() + ":" + $to.val());
+
+                    handlerFactories.form('relationships', ['id', 'type', 'from', 'to'], 'id')(event);
+                });
+                sections.$messageType.on('submit', 'form', handlerFactories.form('message_types', ['id', 'prob'], 'id', ['prob']));
+                sections.$relationshipType.on('submit', 'form', handlerFactories.form('relationship_types', ['label', 'prob'], 'label', ['prob']));
+
+                sections.$people.on('click', 'button.delete', handlerFactories.deleteButton('people', 'name'));
+                sections.$relationships.on('click', 'button.delete', handlerFactories.deleteButton('relationships', 'id'));
+                sections.$messageTypes.on('click', 'button.delete', handlerFactories.deleteButton('message_types', 'id'));
+                sections.$relationshipTypes.on('click', 'button.delete', handlerFactories.deleteButton('relationship_types', 'label'));
+
+                sections.$relationship.on('click', 'button.switch', function(event){
+                    var $button = $(event.target), $form = $button.closest('form'),
+                            $from = $form.find('[name=from]'),
+                            $to = $form.find('[name=to]');
+                    var old_to = $to.val();
+                    $to.val($from.val());
+                    $from.val(old_to);
+                    event.preventDefault();
+                });
+
+                sections.$people.on('click', 'button.edit', handlerFactories.editButton('people', sections.$person.find('form')));
+                sections.$relationships.on('click', 'button.edit', handlerFactories.editButton('relationships', sections.$relationship.find('form')));
+                sections.$messageTypes.on('click', 'button.edit', handlerFactories.editButton('message_types', sections.$messageType.find('form')));
+                sections.$relationshipTypes.on('click', 'button.edit', handlerFactories.editButton('relationship_types', sections.$relationshipType.find('form')));
+
+                sections.$download.on('click', 'button.dl-people', handlerFactories.dlButton('people'));
+                sections.$download.on('click', 'button.dl-relationships', handlerFactories.dlButton('relationships'));
+                sections.$download.on('click', 'button.dl-message-types', handlerFactories.dlButton('message_types'));
+                sections.$download.on('click', 'button.dl-relationship-types', handlerFactories.dlButton('relationship_types'));
+            }
+        };
+
+        stages.load();
+
+    })(jQuery);
+</script>
+
+</body>
+</html>

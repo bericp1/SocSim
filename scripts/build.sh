@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-./clean.sh
+./scripts/clean.sh
 mkdir build bin
 cd build
 cmake ../
