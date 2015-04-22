@@ -72,6 +72,9 @@ to fire up python's built in HTTP server in the res directory:
     
 Otherwise, as long as `./res/` is reachable by a web server, it should still work.
 
+**Note:** There seems to be a bug in the above script so that the python server doesn't shut down when the script is
+killed so you may need to you `ps -A` to find it and `kill [PID]` or `killall [process name]` to kill it.
+
 ### Group Members
 
  * @bericp1 (Brandon Phillips)
