@@ -34,7 +34,32 @@
 
         .error-section {font-size: 2em;}
 
-        .output textarea {height: 500px;}
+        .output > .well {min-height: 434px;}
+
+        .output textarea {height: 250px;}
+
+        .dl-link {
+            width: 170px;
+            float: left;
+            margin: 10px 3.75px 0 3.75px;
+            position: absolute;
+        }
+
+        .well.dl-link-people.dl-link {
+            left: 36px;
+        }
+
+        .well.dl-link-relationships.dl-link {
+            left: 212px;
+        }
+
+        .well.dl-link-message_types.dl-link {
+            left: 390px;
+        }
+
+        .well.dl-link-relationship_types.dl-link {
+            left: 568px;
+        }
     </style>
 </head>
 <body>
@@ -225,7 +250,7 @@
         </div>
         <div class="col-lg-8 output">
             <h2>Output</h2>
-            <div class="well text-center">
+            <div class="well text-center clearfix">
                 <textarea class="form-control"></textarea>
             </div>
         </div>
@@ -402,8 +427,25 @@
             },
             download: function(collection) {
                 var dataToDownload = data[collection];
-                if(collection = 'relationships') dataToDownload = $.each(dataToDownload, function(idx, elem){delete elem.id; dataToDownload[idx] = elem;});
-                sections.$output.find('textarea').val(JSON.stringify(dataToDownload));
+                if(collection == 'relationships') dataToDownload = $.each(dataToDownload, function(idx, elem){delete elem.id; dataToDownload[idx] = elem;});
+                dataToDownload = JSON.stringify(dataToDownload);
+
+                var dataURI =  "data:application/json;charset=utf-8," + encodeURIComponent(dataToDownload),
+                        filename = collection + '.json';
+                var $link = $('<a></a>')
+                        .addClass('btn btn-block btn-info')
+                        .attr('href', dataURI)
+                        .attr('download', filename)
+                        .text(collection);
+
+                var $block = $("<div></div>").addClass('well').addClass('dl-link-' + collection).addClass('dl-link').append($link).append($(" <span>(" + new Date() + ")</span>"));
+
+                sections.$output.find('.dl-link-' + collection).remove();
+
+                sections.$output
+                        .find('textarea')
+                        .val(dataToDownload)
+                        .after($block);
             },
             refresh: function() {
                 sections.$relationship.find('select').each(function(){
