@@ -3,13 +3,13 @@
  *
  */
 
-// STL includes
 #include <iostream>
-
-// Project Includes
-#include "Community.h"
-
+#include "Society.h"
+#include "Importer.h"
 
 int main() {
+    Society* society = Importer::generate();
+    std::cout << society->serialize() << std::endl;
+    delete society;
     return 0;
 }
