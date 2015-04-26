@@ -1,0 +1,41 @@
+dl
+format = edgelist1
+n = 11
+labels embedded:
+data:
+Marshall_Elliot Gertrude_Mckinney 1.0
+Marshall_Elliot Jon_Elliot 1.0
+Marshall_Elliot Rhonda_White 1.0
+Marshall_Elliot Tanya_Long 1.0
+Marshall_Elliot Yvonne_Elliott 1.0
+Gertrude_Mckinney Marshall_Elliot 1.0
+Gertrude_Mckinney Rhonda_White 1.0
+Gertrude_Mckinney Tanya_Long 1.0
+Clayton_Montgomery Tanya_Long 1.0
+Sophie_Long Howard_Stanley 1.0
+Sophie_Long James_Griffin 1.0
+Sophie_Long Jon_Elliot 1.0
+Sophie_Long Mason_Stanley 1.0
+Sophie_Long Tanya_Long 1.0
+James_Griffin Jon_Elliot 1.0
+James_Griffin Sophie_Long 1.0
+Rhonda_White Gertrude_Mckinney 1.0
+Rhonda_White Marshall_Elliot 1.0
+Rhonda_White Tanya_Long 1.0
+Tanya_Long Clayton_Montgomery 1.0
+Tanya_Long Gertrude_Mckinney 1.0
+Tanya_Long Marshall_Elliot 1.0
+Tanya_Long Rhonda_White 1.0
+Tanya_Long Sophie_Long 1.0
+Yvonne_Elliott Jon_Elliot 1.0
+Yvonne_Elliott Marshall_Elliot 1.0
+Yvonne_Elliott Mason_Stanley 1.0
+Jon_Elliot James_Griffin 1.0
+Jon_Elliot Marshall_Elliot 1.0
+Jon_Elliot Sophie_Long 1.0
+Jon_Elliot Yvonne_Elliott 1.0
+Mason_Stanley Howard_Stanley 1.0
+Mason_Stanley Sophie_Long 1.0
+Mason_Stanley Yvonne_Elliott 1.0
+Howard_Stanley Mason_Stanley 1.0
+Howard_Stanley Sophie_Long 1.0

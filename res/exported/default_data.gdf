@@ -1,0 +1,49 @@
+nodedef> name VARCHAR,label VARCHAR,width DOUBLE,height DOUBLE,x DOUBLE,y DOUBLE,color VARCHAR,Occupation VARCHAR
+6,"Marshall Elliot",0.0,0.0,0.5035096,1.0,'153,153,153',"student"
+2,"Gertrude Mckinney",0.0,0.0,0.24824938,0.5957426,'153,153,153',"student"
+1,"Clayton Montgomery",0.0,0.0,0.0,0.302043,'153,153,153',"student"
+9,"Sophie Long",0.0,0.0,1.0,0.08389837,'153,153,153',"bar owner"
+4,"James Griffin",0.0,0.0,0.45476133,0.18999308,'153,153,153',"bartender"
+8,"Rhonda White",0.0,0.0,0.048343215,0.7629944,'153,153,153',"student"
+10,"Tanya Long",0.0,0.0,0.22065046,0.0,'153,153,153',"professor"
+11,"Yvonne Elliott",0.0,0.0,0.6896756,0.48188093,'153,153,153',"interior decorator"
+5,"Jon Elliot",0.0,0.0,0.4609157,0.4115796,'153,153,153',"bartender"
+7,"Mason Stanley",0.0,0.0,0.73442215,0.7365333,'153,153,153',"web developer"
+3,"Howard Stanley",1.0,1.0,0.85629886,0.86101395,'153,153,153',"financial advisor"
+edgedef> node1,node2,label VARCHAR,weight DOUBLE,directed BOOLEAN,color VARCHAR
+6,2,"a friend of",1.0,true,'0,0,0'
+6,5,"a child of",1.0,true,'0,0,0'
+6,8,"a friend of",1.0,true,'0,0,0'
+6,10,"a student to",1.0,true,'0,0,0'
+6,11,"a child of",1.0,true,'0,0,0'
+2,6,"a friend of",1.0,true,
+2,8,"a friend of",1.0,true,
+2,10,"a student to",1.0,true,
+1,10,"a student to",1.0,true,
+9,3,"a neighbour to",1.0,true,'0,0,0'
+9,4,"the boss of",1.0,true,'0,0,0'
+9,5,"the boss of",1.0,true,'0,0,0'
+9,7,"a neighbour to",1.0,true,'0,0,0'
+9,10,"married to",1.0,true,'0,0,0'
+4,5,"a coworker of",1.0,true,
+4,9,"an employee of",1.0,true,
+8,2,"a friend of",1.0,true,'0,0,0'
+8,6,"a friend of",1.0,true,'0,0,0'
+8,10,"a student to",1.0,true,'0,0,0'
+10,1,"a teacher to",1.0,true,'0,0,0'
+10,2,"a teacher to",1.0,true,'0,0,0'
+10,6,"a teacher to",1.0,true,'0,0,0'
+10,8,"a teacher to",1.0,true,'0,0,0'
+10,9,"married to",1.0,true,'0,0,0'
+11,5,"married to",1.0,true,'0,0,0'
+11,6,"a parent of",1.0,true,'0,0,0'
+11,7,"a sibling of",1.0,true,'0,0,0'
+5,4,"a coworker of",1.0,true,
+5,6,"a parent of",1.0,true,
+5,9,"an employee of",1.0,true,
+5,11,"married to",1.0,true,
+7,3,"married to",1.0,true,'0,0,0'
+7,9,"a neighbour to",1.0,true,'0,0,0'
+7,11,"a sibling of",1.0,true,'0,0,0'
+3,7,"married to",1.0,true,
+3,9,"a neighbour to",1.0,true,

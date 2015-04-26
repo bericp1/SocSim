@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gexf xmlns="http://www.gexf.net/1.2draft" version="1.2" xmlns:viz="http://www.gexf.net/1.2draft/viz" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd">
+  <meta lastmodifieddate="2015-04-25">
+    <creator>Gephi 0.8.1</creator>
+    <description></description>
+  </meta>
+  <graph mode="static">
+    <attributes class="node" mode="static">
+      <attribute id="Occupation" title="Occupation" type="string"></attribute>
+    </attributes>
+    <nodes>
+      <node id="6" label="Marshall Elliot">
+        <attvalues>
+          <attvalue for="Occupation" value="student"></attvalue>
+        </attvalues>
+        <viz:size value="0.0"></viz:size>
+        <viz:position x="0.5035096" y="1.0" z="0.0"></viz:position>
+        <viz:color r="153" g="153" b="153"></viz:color>
+      </node>
+      <node id="2" label="Gertrude Mckinney">
+        <attvalues>
+          <attvalue for="Occupation" value="student"></attvalue>
+        </attvalues>
+        <viz:size value="0.0"></viz:size>
+        <viz:position x="0.24824938" y="0.5957426" z="0.0"></viz:position>
+        <viz:color r="153" g="153" b="153"></viz:color>
+      </node>
+      <node id="1" label="Clayton Montgomery">
+        <attvalues>
+          <attvalue for="Occupation" value="student"></attvalue>
+        </attvalues>
+        <viz:size value="0.0"></viz:size>
+        <viz:position x="0.0" y="0.302043" z="0.0"></viz:position>
+        <viz:color r="153" g="153" b="153"></viz:color>
+      </node>
+      <node id="9" label="Sophie Long">
+        <attvalues>
+          <attvalue for="Occupation" value="bar owner"></attvalue>
+        </attvalues>
+        <viz:size value="0.0"></viz:size>
+        <viz:position x="1.0" y="0.08389837" z="0.0"></viz:position>
+        <viz:color r="153" g="153" b="153"></viz:color>
+      </node>
+      <node id="4" label="James Griffin">
+        <attvalues>
+          <attvalue for="Occupation" value="bartender"></attvalue>
+        </attvalues>
+        <viz:size value="0.0"></viz:size>
+        <viz:position x="0.45476133" y="0.18999308" z="0.0"></viz:position>
+        <viz:color r="153" g="153" b="153"></viz:color>
+      </node>
+      <node id="8" label="Rhonda White">
+        <attvalues>
+          <attvalue for="Occupation" value="student"></attvalue>
+        </attvalues>
+        <viz:size value="0.0"></viz:size>
+        <viz:position x="0.048343215" y="0.7629944" z="0.0"></viz:position>
+        <viz:color r="153" g="153" b="153"></viz:color>
+      </node>
+      <node id="10" label="Tanya Long">
+        <attvalues>
+          <attvalue for="Occupation" value="professor"></attvalue>
+        </attvalues>
+        <viz:size value="0.0"></viz:size>
+        <viz:position x="0.22065046" y="0.0" z="0.0"></viz:position>
+        <viz:color r="153" g="153" b="153"></viz:color>
+      </node>
+      <node id="11" label="Yvonne Elliott">
+        <attvalues>
+          <attvalue for="Occupation" value="interior decorator"></attvalue>
+        </attvalues>
+        <viz:size value="0.0"></viz:size>
+        <viz:position x="0.6896756" y="0.48188093" z="0.0"></viz:position>
+        <viz:color r="153" g="153" b="153"></viz:color>
+      </node>
+      <node id="5" label="Jon Elliot">
+        <attvalues>
+          <attvalue for="Occupation" value="bartender"></attvalue>
+        </attvalues>
+        <viz:size value="0.0"></viz:size>
+        <viz:position x="0.4609157" y="0.4115796" z="0.0"></viz:position>
+        <viz:color r="153" g="153" b="153"></viz:color>
+      </node>
+      <node id="7" label="Mason Stanley">
+        <attvalues>
+          <attvalue for="Occupation" value="web developer"></attvalue>
+        </attvalues>
+        <viz:size value="0.0"></viz:size>
+        <viz:position x="0.73442215" y="0.7365333" z="0.0"></viz:position>
+        <viz:color r="153" g="153" b="153"></viz:color>
+      </node>
+      <node id="3" label="Howard Stanley">
+        <attvalues>
+          <attvalue for="Occupation" value="financial advisor"></attvalue>
+        </attvalues>
+        <viz:size value="1.0"></viz:size>
+        <viz:position x="0.85629886" y="0.86101395" z="0.0"></viz:position>
+        <viz:color r="153" g="153" b="153"></viz:color>
+      </node>
+    </nodes>
+    <edges>
+      <edge source="6" target="2" type="directed" label="a friend of">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="6" target="5" type="directed" label="a child of">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="6" target="8" type="directed" label="a friend of">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="6" target="10" type="directed" label="a student to">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="6" target="11" type="directed" label="a child of">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="2" target="6" type="directed" label="a friend of">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="2" target="8" type="directed" label="a friend of">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="2" target="10" type="directed" label="a student to">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="1" target="10" type="directed" label="a student to">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="9" target="3" type="directed" label="a neighbour to">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="9" target="4" type="directed" label="the boss of">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="9" target="5" type="directed" label="the boss of">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="9" target="7" type="directed" label="a neighbour to">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="9" target="10" type="directed" label="married to">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="4" target="5" type="directed" label="a coworker of">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="4" target="9" type="directed" label="an employee of">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="8" target="2" type="directed" label="a friend of">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="8" target="6" type="directed" label="a friend of">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="8" target="10" type="directed" label="a student to">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="10" target="1" type="directed" label="a teacher to">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="10" target="2" type="directed" label="a teacher to">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="10" target="6" type="directed" label="a teacher to">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="10" target="8" type="directed" label="a teacher to">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="10" target="9" type="directed" label="married to">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="11" target="5" type="directed" label="married to">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="11" target="6" type="directed" label="a parent of">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="11" target="7" type="directed" label="a sibling of">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="5" target="4" type="directed" label="a coworker of">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="5" target="6" type="directed" label="a parent of">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="5" target="9" type="directed" label="an employee of">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="5" target="11" type="directed" label="married to">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="7" target="3" type="directed" label="married to">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="7" target="9" type="directed" label="a neighbour to">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="7" target="11" type="directed" label="a sibling of">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="3" target="7" type="directed" label="married to">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="3" target="9" type="directed" label="a neighbour to">
+        <attvalues></attvalues>
+      </edge>
+    </edges>
+  </graph>
+</gexf>

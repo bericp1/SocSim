@@ -1,0 +1,64 @@
+*Node data
+ID Occupation
+6 student
+2 student
+1 student
+9 "bar owner"
+4 bartender
+8 student
+10 professor
+11 "interior decorator"
+5 bartender
+7 "web developer"
+3 "financial advisor"
+*Node properties
+ID x y size color shortlabel
+6 0.5035095819233295 1.0 Infinity 153 "Marshall Elliot"
+2 0.24824938354661388 0.5957425699955051 Infinity 153 "Gertrude Mckinney"
+1 0.0 0.30204299077713753 Infinity 153 "Clayton Montgomery"
+9 1.0 0.08389837564501643 Infinity 153 "Sophie Long"
+4 0.4547613071512361 0.18999308529694378 Infinity 153 "James Griffin"
+8 0.048343215973035446 0.762994479727761 Infinity 153 "Rhonda White"
+10 0.22065046304815553 0.0 Infinity 153 "Tanya Long"
+11 0.6896756508731587 0.48188094200138465 Infinity 153 "Yvonne Elliott"
+5 0.46091571066632675 0.41157960395403714 Infinity 153 "Jon Elliot"
+7 0.7344221403452491 0.7365332642320349 Infinity 153 "Mason Stanley"
+3 0.8562988466534284 0.861013954083422 Infinity 153 "Howard Stanley"
+*Tie data
+from to strength
+6 2 1.0
+6 5 1.0
+6 8 1.0
+6 10 1.0
+6 11 1.0
+2 6 1.0
+2 8 1.0
+2 10 1.0
+1 10 1.0
+9 3 1.0
+9 4 1.0
+9 5 1.0
+9 7 1.0
+9 10 1.0
+4 5 1.0
+4 9 1.0
+8 2 1.0
+8 6 1.0
+8 10 1.0
+10 1 1.0
+10 2 1.0
+10 6 1.0
+10 8 1.0
+10 9 1.0
+11 5 1.0
+11 6 1.0
+11 7 1.0
+5 4 1.0
+5 6 1.0
+5 9 1.0
+5 11 1.0
+7 3 1.0
+7 9 1.0
+7 11 1.0
+3 7 1.0
+3 9 1.0

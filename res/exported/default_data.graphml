@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns">
+<key attr.name="label" attr.type="string" for="node" id="label"/>
+<key attr.name="Edge Label" attr.type="string" for="edge" id="edgelabel"/>
+<key attr.name="weight" attr.type="double" for="edge" id="weight"/>
+<key attr.name="Edge Id" attr.type="string" for="edge" id="edgeid"/>
+<key attr.name="r" attr.type="int" for="node" id="r"/>
+<key attr.name="g" attr.type="int" for="node" id="g"/>
+<key attr.name="b" attr.type="int" for="node" id="b"/>
+<key attr.name="x" attr.type="float" for="node" id="x"/>
+<key attr.name="y" attr.type="float" for="node" id="y"/>
+<key attr.name="size" attr.type="float" for="node" id="size"/>
+<key attr.name="Occupation" attr.type="string" for="node" id="Occupation"/>
+<graph edgedefault="undirected">
+<node id="6">
+<data key="label">Marshall Elliot</data>
+<data key="Occupation">student</data>
+<data key="size">0.0</data>
+<data key="r">153</data>
+<data key="g">153</data>
+<data key="b">153</data>
+<data key="x">0.5035096</data>
+<data key="y">1.0</data>
+</node>
+<node id="2">
+<data key="label">Gertrude Mckinney</data>
+<data key="Occupation">student</data>
+<data key="size">0.0</data>
+<data key="r">153</data>
+<data key="g">153</data>
+<data key="b">153</data>
+<data key="x">0.24824938</data>
+<data key="y">0.5957426</data>
+</node>
+<node id="1">
+<data key="label">Clayton Montgomery</data>
+<data key="Occupation">student</data>
+<data key="size">0.0</data>
+<data key="r">153</data>
+<data key="g">153</data>
+<data key="b">153</data>
+<data key="x">0.0</data>
+<data key="y">0.302043</data>
+</node>
+<node id="9">
+<data key="label">Sophie Long</data>
+<data key="Occupation">bar owner</data>
+<data key="size">0.0</data>
+<data key="r">153</data>
+<data key="g">153</data>
+<data key="b">153</data>
+<data key="x">1.0</data>
+<data key="y">0.08389837</data>
+</node>
+<node id="4">
+<data key="label">James Griffin</data>
+<data key="Occupation">bartender</data>
+<data key="size">0.0</data>
+<data key="r">153</data>
+<data key="g">153</data>
+<data key="b">153</data>
+<data key="x">0.45476133</data>
+<data key="y">0.18999308</data>
+</node>
+<node id="8">
+<data key="label">Rhonda White</data>
+<data key="Occupation">student</data>
+<data key="size">0.0</data>
+<data key="r">153</data>
+<data key="g">153</data>
+<data key="b">153</data>
+<data key="x">0.048343215</data>
+<data key="y">0.7629944</data>
+</node>
+<node id="10">
+<data key="label">Tanya Long</data>
+<data key="Occupation">professor</data>
+<data key="size">0.0</data>
+<data key="r">153</data>
+<data key="g">153</data>
+<data key="b">153</data>
+<data key="x">0.22065046</data>
+<data key="y">0.0</data>
+</node>
+<node id="11">
+<data key="label">Yvonne Elliott</data>
+<data key="Occupation">interior decorator</data>
+<data key="size">0.0</data>
+<data key="r">153</data>
+<data key="g">153</data>
+<data key="b">153</data>
+<data key="x">0.6896756</data>
+<data key="y">0.48188093</data>
+</node>
+<node id="5">
+<data key="label">Jon Elliot</data>
+<data key="Occupation">bartender</data>
+<data key="size">0.0</data>
+<data key="r">153</data>
+<data key="g">153</data>
+<data key="b">153</data>
+<data key="x">0.4609157</data>
+<data key="y">0.4115796</data>
+</node>
+<node id="7">
+<data key="label">Mason Stanley</data>
+<data key="Occupation">web developer</data>
+<data key="size">0.0</data>
+<data key="r">153</data>
+<data key="g">153</data>
+<data key="b">153</data>
+<data key="x">0.73442215</data>
+<data key="y">0.7365333</data>
+</node>
+<node id="3">
+<data key="label">Howard Stanley</data>
+<data key="Occupation">financial advisor</data>
+<data key="size">1.0</data>
+<data key="r">153</data>
+<data key="g">153</data>
+<data key="b">153</data>
+<data key="x">0.85629886</data>
+<data key="y">0.86101395</data>
+</node>
+<edge source="6" target="2" type="directed">
+<data key="edgelabel">a friend of</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="6" target="5" type="directed">
+<data key="edgelabel">a child of</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="6" target="8" type="directed">
+<data key="edgelabel">a friend of</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="6" target="10" type="directed">
+<data key="edgelabel">a student to</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="6" target="11" type="directed">
+<data key="edgelabel">a child of</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="2" target="6" type="directed">
+<data key="edgelabel">a friend of</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="2" target="8" type="directed">
+<data key="edgelabel">a friend of</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="2" target="10" type="directed">
+<data key="edgelabel">a student to</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="1" target="10" type="directed">
+<data key="edgelabel">a student to</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="9" target="3" type="directed">
+<data key="edgelabel">a neighbour to</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="9" target="4" type="directed">
+<data key="edgelabel">the boss of</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="9" target="5" type="directed">
+<data key="edgelabel">the boss of</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="9" target="7" type="directed">
+<data key="edgelabel">a neighbour to</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="9" target="10" type="directed">
+<data key="edgelabel">married to</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="4" target="5" type="directed">
+<data key="edgelabel">a coworker of</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="4" target="9" type="directed">
+<data key="edgelabel">an employee of</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="8" target="2" type="directed">
+<data key="edgelabel">a friend of</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="8" target="6" type="directed">
+<data key="edgelabel">a friend of</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="8" target="10" type="directed">
+<data key="edgelabel">a student to</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="10" target="1" type="directed">
+<data key="edgelabel">a teacher to</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="10" target="2" type="directed">
+<data key="edgelabel">a teacher to</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="10" target="6" type="directed">
+<data key="edgelabel">a teacher to</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="10" target="8" type="directed">
+<data key="edgelabel">a teacher to</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="10" target="9" type="directed">
+<data key="edgelabel">married to</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="11" target="5" type="directed">
+<data key="edgelabel">married to</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="11" target="6" type="directed">
+<data key="edgelabel">a parent of</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="11" target="7" type="directed">
+<data key="edgelabel">a sibling of</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="5" target="4" type="directed">
+<data key="edgelabel">a coworker of</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="5" target="6" type="directed">
+<data key="edgelabel">a parent of</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="5" target="9" type="directed">
+<data key="edgelabel">an employee of</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="5" target="11" type="directed">
+<data key="edgelabel">married to</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="7" target="3" type="directed">
+<data key="edgelabel">married to</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="7" target="9" type="directed">
+<data key="edgelabel">a neighbour to</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="7" target="11" type="directed">
+<data key="edgelabel">a sibling of</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="3" target="7" type="directed">
+<data key="edgelabel">married to</data>
+<data key="weight">1.0</data>
+</edge>
+<edge source="3" target="9" type="directed">
+<data key="edgelabel">a neighbour to</data>
+<data key="weight">1.0</data>
+</edge>
+</graph>
+</graphml>

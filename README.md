@@ -5,15 +5,21 @@
 ##  SocSim
 
 ...simulates the spread of different kinds of information through a defined community. Using a graph to represent the
-community, nodes within the graph represent entities such as people and edges within the graph are directed and
-represent the relationships between these people. Each relationship has a type and each type of relationship has
-defined weights that represent the possibility a specific type of information will be shared between the two people
-that the relationship specifically connects. SocSim generates the community graph from static JSON resources files that
-define all people, their relationships, etc. It then asks for a message from the user (and some important meta data
-regarding the message) and sends the message through the graph. Stateful information for individual messages such as who
-has heard the message, if what they heard differed from the original messsage (e.g. the telephone game), etc. is stored
-in a hash table alongside the message, whose data will be formatted and outputted once the message has made its
+community, nodes within the graph represent people and edges within the graph are directed and represent the
+relationships between these people. Each relationship has a type and each type of relationship has defined weights that
+represent the probability that a specific type of message will be shared or transferred between the two people
+that the relationship specifically connects. Each type of message has a default probability of transfer and an optional
+maximum number of times the message can be shared (in order to simulate the decay of information value in a simple way).
+
+SocSim generates the community graph from static JSON resources files that define the possible message types, all
+possible relationship types, all people, and all of the relationships between people. The user can then input a message
+and some important meta data regarding the message and send it through the graph. Stateful information for individual
+messages such as who has heard the message, from whom the message came, etc. is stored in a hash table alongside the
+message (in what shall be called a parcel), whose data will be formatted and outputted once the message has made its
 go-around.
+
+SocSim also provides some analytical data, insight, and predictions about how a message will traverse the community,
+such as the most likely path between two people a type of message will take.
 
 ### Dependencies
 
@@ -61,10 +67,22 @@ executes `./scripts/clean.sh` initially before compilation
     
 This is essentially what the automated build script(s) do(es).
 
+### Graph Data
+
+Data is stored in `./res/` in multiple JSON files. This is the data loaded into the graph initially. SocSim includes
+a small graph of example data.
+
+![Default data graph](res/exported/default_data.png)
+
+This representation of the graph has been exported into various formats that can be imported into many different
+graph visualization tools/apps. They can be found in [`./res/exported`](res/exported).
+
+The probabilities associated with the various relationship types is not stored in any of the exported representations.
+To view this information, use the [Data Generator](#data-generator)
+
 ### Data Generator
 
-Data is stored in `./res/` in multiple JSON files. This is the data loaded into the graph
-initially. This data can be edited manually or generated using a simple HTML/CSS/JavaScript tool included with SocSim.
+The default data can be edited manually or generated using a simple HTML/CSS/JavaScript tool included with SocSim.
 It relies on AJAX and so must be run in a web server. If you have python installed, you can use the included script
 to fire up python's built in HTTP server in the res directory:
 
