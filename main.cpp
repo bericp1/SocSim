@@ -1,15 +1,7 @@
-/***
- * Driver file
- *
- */
-
-#include <iostream>
-#include "Society.h"
-#include "Importer.h"
+#include "Driver.h"
 
 int main() {
-    Society* society = Importer::generate();
-    std::cout << society->serialize() << std::endl;
-    delete society;
+    Driver driver = Driver();
+    driver.start();
     return 0;
 }

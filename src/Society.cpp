@@ -85,22 +85,20 @@ std::string Society::serialize() {
 
     output += "# Relationship Types: \n";
     if(this->relationship_types_.size() == 0)
-        output += "(none)\n";
+        output += "\t(none)\n";
     else
         for(rt_it = this->relationship_types_.begin(); rt_it != this->relationship_types_.end(); ++rt_it)
-            output += (rt_it->second->getName() + "\n");
+            output += ("\t" + rt_it->second->getName() + "\n");
 
     output += "\n# People: \n";
     if(this->people_.size() == 0)
-        output += "(none)\n";
+        output += "\t(none)\n";
     else
         for(p_it = this->people_.begin(); p_it != this->people_.end(); ++p_it)
-            output += p_it->second->serialize();
+            output += p_it->second->serialize("\t");
 
     output += "\n# Message Types: \n";
-    output += this->dispatcher_->serialize();
-
-    output += "==========================================================\n\n";
+    output += this->dispatcher_->serialize("\t");
 
     return output;
 }

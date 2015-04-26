@@ -14,13 +14,18 @@ private:
 
     MessageTypes message_types_;
 public:
+    virtual ~Dispatcher();
+
     MessageType* addMessageType(MessageType* type);
     MessageType* addMessageType(const std::string& name, float default_probability, unsigned int max);
     MessageType* addMessageType(const std::string& name, float default_probability);
     MessageType* addMessageType(const std::string& name, unsigned int max);
     MessageType* addMessageType(const std::string& name);
+
     MessageType* findMessageType(const std::string& name);
+
     std::string serialize();
+    std::string serialize(std::string line_prefix);
 };
 
 

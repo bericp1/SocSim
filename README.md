@@ -31,7 +31,11 @@ such as the most likely path between two people a type of message will take.
 
 ### System Requirements
 
+ * C++11-compliant version of the GCC compiler
+    * cmake will use the `-std=c++11` flag when compiling
  * Linux (probably)
+    * at least a shell supporting STDIN, STDOUT, and STDERR, of course
+    * all scripts in [`./scripts`](scripts) are bash scripts
  * cmake (3.1+)
  * python (for the [Data Generator](#data-generator); see below)
 
@@ -101,25 +105,25 @@ killed so you may need to you `ps -A` to find it and `kill [PID]` or `killall [p
 
 ### TODO
 
- * Make up data (JSON res files)
+ * ~~Make up data (JSON res files)~~
  * ~~Select a JSON lib~~
  * Classes
-    * **Community**: graph;
-    * **Person**: node; a person with a name and occupation
-        * name; string
-        * occupation; string
-    * **Relationship**: edge;
-        * type; string (an existing `RelationshipType` label)
-        * from; string (name of `Person`)
-        * to; string (name of `Person`)
-    * **RelationshipType**: qualifies and quantifies a type of relationship
-        * label; string (describes type of relationship; e.g. "married to" or "teaches" or "is a friend of")
-        * prob; map/hashtable<string,float> (holds probabilities for the transfer of different message types)
-    * **MessageType**: quantifies a type of message
-        * label; string (describes the type of message; e.g. "rumor" or "news")
-        * prob; float (the default probability for transfer for messages of this type)
+    * ~~**Society**: graph;~~
+    * ~~**Person**: node; a person with a name and occupation~~
+        * ~~name; string~~
+        * ~~occupation; string~~
+    * ~~**Relationship**: edge;~~
+        ~~* type; string (an existing `RelationshipType` label)~~
+        ~~* from; string (name of `Person`)~~
+        ~~* to; string (name of `Person`)~~
+    * ~~**RelationshipType**: qualifies and quantifies a type of relationship~~
+        * ~~label; string (describes type of relationship; e.g. "married to" or "teaches" or "is a friend of")~~
+        * ~~prob; map/hashtable<string,float> (holds probabilities for the transfer of different message types)~~
+    * ~~**MessageType**: quantifies a type of message~~
+        * ~~label; string (describes the type of message; e.g. "rumor" or "news")~~
+        * ~~prob; float (the default probability for transfer for messages of this type)~~
     * **Message**
     * **Parcel**: holds a `Message` and a hashtable of data about who has heard the message
- * Construct graph from imported data
- * I/O controller
- * Build hashtable on Message object to store traversal data (seperate tracker class? e.g. "Parcel")
+ * ~~Construct graph from imported data~~
+ * ~~I/O controller~~
+ * Build hashtable on Message object to store traversal data (separate tracker class? e.g. "Parcel")

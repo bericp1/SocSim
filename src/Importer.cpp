@@ -19,8 +19,7 @@ rapidjson::Document* Importer::parseFile(const std::string& filename) {
     return document;
 }
 
-Society* Importer::generate() {
-    Society* society = new Society;
+Society* Importer::importTo(Society* society) {
     Dispatcher* dispatcher = society->getDispatcher();
 
     rapidjson::Document* message_types_document = Importer::parseFile(Importer::res_directory + Importer::message_types_filename);
@@ -117,4 +116,8 @@ Society* Importer::generate() {
     delete relationships_document;
 
     return society;
+}
+
+Society* Importer::generate() {
+    return Importer::importTo(new Society);
 }

@@ -32,17 +32,15 @@ Relationship* Person::relateTo(Person* person, RelationshipType* type) {
     return relationship;
 }
 std::string Person::serialize() {
-    std::string output = "";
-
-    output += this->getName();
-    output += " - ";
-    output += this->getOccupation();
-    output += "\n";
+    return this->serialize("");
+}
+std::string Person::serialize(std::string line_prefix) {
+    std::string output = (line_prefix + this->getName() + " - " + this->getOccupation() + "\n");
 
     RelationshipsIter it;
 
     for(it = this->relationships_.begin(); it != this->relationships_.end(); ++it) {
-        output += ("\tis " + it->second->getType()->getName() + " " + it->second->getTo()->getName() + "\n");
+        output += (line_prefix + "\tis " + it->second->getType()->getName() + " " + it->second->getTo()->getName() + "\n");
     }
 
     return output;

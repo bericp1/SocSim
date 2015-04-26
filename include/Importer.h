@@ -15,6 +15,7 @@ public:
 
     static rapidjson::Document* parseFile(const std::string& filename);
 
+    static Society* importTo(Society* society);
     static Society* generate();
 };
 
