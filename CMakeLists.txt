@@ -17,7 +17,9 @@ set(HEADER_FILES
     include/DuplicateRelationshipException.h
     include/DuplicateMessageTypeException.h
     include/Importer.h
-    include/Driver.h)
+    include/Driver.h
+    include/Message.h
+    include/DispatcherReport.h)
 
 set(SOURCE_FILES
     main.cpp
@@ -28,6 +30,8 @@ set(SOURCE_FILES
     src/Relationship.cpp
     src/RelationshipType.cpp
     src/Importer.cpp
-    src/Driver.cpp)
+    src/Driver.cpp
+    src/Message.cpp
+    src/DispatcherReport.cpp)
 
 add_executable(socsim ${SOURCE_FILES} ${HEADER_FILES})

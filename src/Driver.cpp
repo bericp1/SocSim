@@ -1,10 +1,17 @@
 #include <iostream>
-#include <Importer.h>
-#include <DuplicateMessageTypeException.h>
-#include <DuplicateRelationshipException.h>
-#include <MessageTypeNotFoundException.h>
-#include <PersonNotFoundException.h>
+#include <cstdlib>
+#include <ctime>
+#include "Importer.h"
+#include "DuplicateMessageTypeException.h"
+#include "DuplicateRelationshipException.h"
+#include "MessageTypeNotFoundException.h"
+#include "PersonNotFoundException.h"
 #include "Driver.h"
+
+Driver::Driver() {
+    // Seed the random number generator
+    std::srand(static_cast <unsigned> (std::time(0)));
+}
 
 std::string Driver::getStringFromUser(std::string prompt) {
     std::string input = "";
@@ -33,6 +40,7 @@ void Driver::menu() {
     std::cout << "\t2. Show state of society" << std::endl;
     std::cout << "\t3. Import society data" << std::endl;
     std::cout << "\t4. Destroy society" << std::endl;
+    std::cout << "\t5. Send Message" << std::endl;
     std::cout << "\t0. Quit\n\n" << std::flush;
 }
 
@@ -95,6 +103,7 @@ void Driver::run(int command) {
             }
             break;
         }
+        // 4. Destroy the existing society
         case 4: {
             if(this->society_ == nullptr) {
                 std::cout << "No existing society.\n\n" << std::flush;
@@ -107,6 +116,35 @@ void Driver::run(int command) {
             }
             break;
         }
+        // 5. Send Message
+        case 5: {
+            // Get the type from the user
+            std::string type_name = this->getStringFromUser("Enter a message type: ");
+            MessageType* type = this->society_->getDispatcher()->findMessageType(type_name);
+            if(type == nullptr) {
+                std::cerr << "Non-existent message type: \"" << type_name << "\"\n\n" << std::flush;
+            } else {
+                // Get the origin person from the user
+                std::string person_name = this->getStringFromUser("Who should the message start with? Enter name: ");
+                Person* person = this->society_->findPerson(person_name);
+                if(person == nullptr) {
+                    std::cerr << "Non-existent person: \"" << person_name << "\"\n\n" << std::flush;
+                } else {
+                    // Get the message from the user
+                    std::string contents = this->getStringFromUser("Enter message contents:\n");
+                    Message message = Message(contents, type);
+                    std::cout << "\nMessage prepared. Sending through society... " << std::flush;
+                    // Send the message through the society graph
+                    DispatcherReport* report = this->society_->getDispatcher()->sendMessage(person, &message);
+                    // Display results
+                    std::cout << "Success! Results:\n\n" << report->serialize("\t") << std::endl;
+                    // Delete the generated report
+                    delete report;
+                }
+            }
+            break;
+        }
+        // 0. Quit
         case 0: {
             // Show exit message and switch running state to off
             std::cout << "Peace out! B-)" << std::endl;

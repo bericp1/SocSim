@@ -56,6 +56,10 @@ public:
     RelationshipType* findRelationshipType(const std::string& name);
     /**
      * Register a new relationship type
+     *
+     * Pre-conditions:
+     *  * A relationship type doesn't already exist with the specified name
+     *
      * @param name the name of the relationship type to add
      * @return the new relationship type
      */
@@ -69,6 +73,12 @@ public:
     Person* findPerson(const std::string& name);
     /**
      * Add a person to the society
+     *
+     * Pre-conditions:
+     *  * A person with the specified name does not already exist in the society
+     * Post-conditions:
+     *  * The person will be a part of the society
+     *
      * @param name the person's name
      * @param occupation the person's occupation
      * @return the new person
@@ -77,6 +87,13 @@ public:
 
     /**
      * Establish a relationship between two people in the society
+     *
+     * Pre-conditions:
+     *  * Both specified people exist in the society
+     *  * The specified type is registered in the society
+     * Post-conditions:
+     *  * A relationship will be added to "from" Person pointing to "to" Person with type "type"
+     *
      * @param from the person that relationship belongs to or starts at
      * @param to the person the relationship is with
      * @param type the type of the relationship

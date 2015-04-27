@@ -18,9 +18,6 @@ messages such as who has heard the message, from whom the message came, etc. is 
 message (in what shall be called a parcel), whose data will be formatted and outputted once the message has made its
 go-around.
 
-SocSim also provides some analytical data, insight, and predictions about how a message will traverse the community,
-such as the most likely path between two people a type of message will take.
-
 ### Dependencies
 
  * [rapidjson](https://github.com/miloyip/rapidjson/)
@@ -77,10 +74,9 @@ After building, SocSim can be run with the following command:
 
     $ ./bin/socsim
     
-Whatever you do, in order to be able to properly import data from `./res`, `./res` must be in the current working
-directory.
+Whatever you do, in order to be able to properly import data `res` must be in the current working directory.
 
-Running SocSim will fire up the Driver ([header here](include/Driver.h) and [implementation here](src/Driver.cpp)). The
+Running SocSim will fire up the Driver ([interface here](include/Driver.h) and [implementation here](src/Driver.cpp)). The
 driver will provide a menu to the user, gather input, and output information about the society and messages and whatnot
 as its modified. Simply follow the prompts.
 
@@ -124,7 +120,7 @@ killed so you may need to you `ps -A` to find it and `kill [PID]` or `killall [p
 
  * ~~Make up data (JSON res files)~~
  * ~~Select a JSON lib~~
- * Classes
+ * ~~Classes~~
     * ~~**Society**: graph;~~
     * ~~**Person**: node; a person with a name and occupation~~
         * ~~name; string~~
@@ -139,8 +135,8 @@ killed so you may need to you `ps -A` to find it and `kill [PID]` or `killall [p
     * ~~**MessageType**: quantifies a type of message~~
         * ~~label; string (describes the type of message; e.g. "rumor" or "news")~~
         * ~~prob; float (the default probability for transfer for messages of this type)~~
-    * **Message**
-    * **Parcel**: holds a `Message` and a hashtable of data about who has heard the message
+    * ~~**Message**~~
+    * ~~**Parcel**: holds a `Message` and a hashtable of data about who has heard the message~~
  * ~~Construct graph from imported data~~
  * ~~I/O controller~~
- * Build hashtable on Message object to store traversal data (separate tracker class? e.g. "Parcel")
+ * ~~Build hashtable on Message object to store traversal data (separate tracker class? e.g. "Parcel")~~

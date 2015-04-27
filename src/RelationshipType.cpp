@@ -12,3 +12,6 @@ float RelationshipType::getProbability(MessageType* type) {
     else
         return this->probabilities_[type];
 }
+RelationshipType::Probabilities RelationshipType::getProbabilities() {
+    return this->probabilities_;
+}

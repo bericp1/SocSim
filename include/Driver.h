@@ -14,6 +14,7 @@ private:
     /** The state of the input/output loop */
     bool running_ = false;
 public:
+    Driver();
     /**
      * Gets a string as input from the user through std::cin
      * @param prompt output this before receiving input (no newline is added)
@@ -50,6 +51,7 @@ public:
 
     /**
      * Runs the integer-specified command
+     * Post-conditions: (see Driver::start)
      * @param command number that corresponds to a menu item
      */
     void run(int command);
@@ -58,7 +60,7 @@ public:
      * Start looping, showing the menu and taking commands until the user selects "Quit"
      *
      * Post-conditions:
-     *  * this->society_ may be null or non-null
+     *  * this->society_ may be null or non-null; if non-null, may or may not contain data
      */
     void start();
 };

@@ -1,10 +1,13 @@
 #ifndef SOCSIM_DISPATCHER_H
 #define SOCSIM_DISPATCHER_H
 
+// Forward decl
+class Society;
 
 #include <map>
 #include <string>
 #include "MessageType.h"
+#include "DispatcherReport.h"
 
 /**
  * Manages all messages that will be sent through a society.
@@ -22,7 +25,13 @@ private:
 
     /** The available message types */
     MessageTypes message_types_;
+
+    /** A backreference to the society graph */
+    Society* society_;
 public:
+    /** Society graph backreference is required */
+    Dispatcher(Society* society);
+
     virtual ~Dispatcher();
 
     /**
@@ -44,6 +53,17 @@ public:
      * @return the message type if found; null otherwise
      */
     MessageType* findMessageType(const std::string& name);
+
+    /**
+     * Send a message through the graph
+     * Post-conditions:
+     *  * Memory management of returned report is responsibilty of caller
+     * @param origin the person who the message starts at
+     * @param message the message to send
+     * @return the DispatcherReport with details about how the message traversed the society
+     */
+    DispatcherReport* sendMessage(Person* origin, Message* message);
+
 
     /**
      * Create a string representation of the dispatcher which only includes a list of registered message types

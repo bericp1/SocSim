@@ -20,6 +20,8 @@ public:
 
     /**
      * Parses a file into rapidjson DOM Document
+     * Pre-conditions:
+     *  * filename is a path to an existing JSON file with an array as the root node; see `./res/*.json` for format
      * @param filename the path to the file
      * @return the rapidjson DOM Document representation of the JSON data in the file
      */
@@ -27,12 +29,17 @@ public:
 
     /**
      * Parses data in JSON files in ./res/ and imports them into the specified society
+     * Pre-conditions:
+     *  * specified society is non-null
+     *  * specified society does not currently contain the data that's being imported (collisions will raise exceptions)
      * @param society the society to import into
      * @return the society that data was imported into
      */
     static Society* importTo(Society* society);
     /**
      * An alias to Importer::importTo that creates a new Society instead of using an existing one
+     * Post-conditions:
+     *  * Memory management of new Society is responsibility of caller
      * @return the new society with all the imported data
      */
     static Society* generate();

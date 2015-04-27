@@ -1,9 +1,10 @@
-#include <PersonNotFoundException.h>
-#include <MessageTypeNotFoundException.h>
+#include <cmath>
 #include "Society.h"
+#include "PersonNotFoundException.h"
+#include "MessageTypeNotFoundException.h"
 
 Society::Society() {
-    this->dispatcher_ = new Dispatcher;
+    this->dispatcher_ = new Dispatcher(this);
 }
 
 Society::~Society() {
@@ -82,13 +83,20 @@ std::string Society::serialize() {
 
     PeopleIter p_it;
     RelationshipTypesIter rt_it;
+    RelationshipType::Probabilities probs;
+    RelationshipType::ProbabilitiesIter pr_it;
 
     output += "# Relationship Types: \n";
     if(this->relationship_types_.size() == 0)
         output += "\t(none)\n";
     else
-        for(rt_it = this->relationship_types_.begin(); rt_it != this->relationship_types_.end(); ++rt_it)
+        for(rt_it = this->relationship_types_.begin(); rt_it != this->relationship_types_.end(); ++rt_it) {
             output += ("\t" + rt_it->second->getName() + "\n");
+            probs = rt_it->second->getProbabilities();
+            for(pr_it = probs.begin(); pr_it != probs.end(); ++pr_it) {
+                output += ("\t\t" + std::to_string((int)std::floor(pr_it->second*100)) + "% probability to transfer " + pr_it->first->getName() + "\n");
+            }
+        }
 
     output += "\n# People: \n";
     if(this->people_.size() == 0)

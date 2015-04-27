@@ -12,7 +12,7 @@
  * This is the node in the graph
  */
 class Person {
-private:
+public:
     /**
      * A container type for relationships. A map is used for quick searching
      * Key: person
@@ -23,7 +23,7 @@ private:
      * A shortcut to the container's iterator
      */
     typedef std::map<Person*, Relationship*>::iterator RelationshipsIter;
-
+private:
     /** The name of this person */
     std::string name_;
     /** This person's occupation */
@@ -54,13 +54,46 @@ public:
 
     /**
      * See if a relationship exists between this person and another specified person
+     *
+     * Pre-conditions:
+     *  * The specified person exists in the society
+     *
      * @param person the person to look for in the relationships
      * @return true if the person has a relationship to the specified person; false otherwise
      */
     bool isRelatedTo(Person* person);
 
     /**
+     * Get the relationship to the sepcified person
+     *
+     * Pre-conditions:
+     *  * The specified person exists in the society
+     *
+     * @param person the person with whom to look for a relationship
+     * @return the realtionship; null if not found
+     */
+    Relationship* getRelationship(Person* person);
+
+    /**
+     * Get all relationships
+     *
+     * Post-conditions:
+     *  * The returned map is a copy of this->relationships_
+     *
+     * @return all relationships
+     */
+    Relationships getRelationships();
+
+    /**
      * Establish a relationship between this person and a specified person
+     *
+     * Pre-conditions:
+     *  * Specified person exists in society
+     *  * Specified type is registered in the society
+     *  * No relationship already exists with the specified person
+     * Post-conditions:
+     *  * On success, new relationship in this->relationships_
+     *
      * @param person the person that the relationship should be established with
      * @param type the type of the relationship
      * @return the new relationship

@@ -1,4 +1,4 @@
-#include <DuplicateRelationshipException.h>
+#include "DuplicateRelationshipException.h"
 #include "Person.h"
 
 Person::~Person() {
@@ -20,12 +20,20 @@ const std::string& Person::getOccupation() {
 bool Person::isRelatedTo(Person* person) {
     return (this->relationships_.count(person) == 1);
 }
+Relationship* Person::getRelationship(Person* person) {
+    RelationshipsIter iter = this->relationships_.find(person);
+
+    return (iter == this->relationships_.end()) ? nullptr : iter->second;
+}
+Person::Relationships Person::getRelationships() {
+    return this->relationships_;
+}
 Relationship* Person::relateTo(Person* person, RelationshipType* type) {
     if(this->isRelatedTo(person)) {
         throw new DuplicateRelationshipException;
     }
 
-    Relationship* relationship = new Relationship(person, type);
+    Relationship* relationship = new Relationship(this, person, type);
 
     this->relationships_[person] = relationship;
 
