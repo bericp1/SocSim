@@ -35,20 +35,25 @@ void Driver::menu() {
     std::cout << "\t4. Destroy society" << std::endl;
     std::cout << "\t0. Quit\n\n" << std::flush;
 }
+
 void Driver::run(int command) {
     switch(command) {
+        // 1. Create new society
         case 1: {
+            // Destroy existing society if necessary
             if(this->society_ != nullptr) {
                 std::cout << "Destroying existing society... " << std::flush;
                 delete this->society_;
                 this->society_ = nullptr;
                 std::cout << "Success!" << std::endl;
             }
+            // Create new empty society
             std::cout << "Creating new society... " << std::flush;
             this->society_ = new Society;
             std::cout << "Success!\n\n" << std::flush;
             break;
         }
+        // 2. Show state of society
         case 2: {
             if(this->society_ == nullptr) {
                 std::cout << "No existing society.\n\n" << std::flush;
@@ -57,13 +62,16 @@ void Driver::run(int command) {
             }
             break;
         }
+        // 3. Import society data
         case 3: {
             try{
                 if(this->society_ == nullptr) {
+                    // Simply generate a new society from res data if there is no existing society
                     std::cout << "No existing society. Creating new society from data in \"./res\"... " << std::flush;
                     this->society_ = Importer::generate();
                     std::cout << "Success!\n\n" << std::flush;
                 } else {
+                    // Attempt to import data into the existing society
                     std::cout << "Importing data from \"./res/\"... " << std::flush;
                     Importer::importTo(this->society_);
                     std::cout << "Success!\n\n" << std::flush;
@@ -91,6 +99,7 @@ void Driver::run(int command) {
             if(this->society_ == nullptr) {
                 std::cout << "No existing society.\n\n" << std::flush;
             } else {
+                // Destroy the society and reset pointer to null
                 std::cout << "Destroying existing society... " << std::flush;
                 delete this->society_;
                 this->society_ = nullptr;
@@ -99,26 +108,34 @@ void Driver::run(int command) {
             break;
         }
         case 0: {
+            // Show exit message and switch running state to off
             std::cout << "Peace out! B-)" << std::endl;
             this->running_ = false;
             break;
         }
         default: {
+            // Show an error in STDERR if an invalid command was provided
             std::cerr << "\"" << command << "\" is an invalid command.\n\n" << std::flush;
             break;
         }
     }
 }
 void Driver::start() {
+    // Flip running state to true
     this->running_ = true;
+    // Will store command as user inputs in each loop
     int command;
+    // Loop while running state is on
     while(this->running_) {
+        // Print the menu
         this->menu();
         try{
+            // Get the command and run it with this->run
             command = Driver::getIntFromUser("Enter an menu option by number: ");
             std::cout << std::endl;
             this->run(command);
         } catch(std::invalid_argument e) {
+            // If a non-int was provided, show error to user.
             std::cerr << "Menu options can only be selected by their number.\n"
                     "Please enter an integer number corresponding to the menu option you'd like to select.\n\n"
                     << std::flush;

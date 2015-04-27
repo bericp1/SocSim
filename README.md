@@ -71,6 +71,23 @@ executes `./scripts/clean.sh` initially before compilation
     
 This is essentially what the automated build script(s) do(es).
 
+### Usage/The Driver
+
+After building, SocSim can be run with the following command:
+
+    $ ./bin/socsim
+    
+Whatever you do, in order to be able to properly import data from `./res`, `./res` must be in the current working
+directory.
+
+Running SocSim will fire up the Driver ([header here](include/Driver.h) and [implementation here](src/Driver.cpp)). The
+driver will provide a menu to the user, gather input, and output information about the society and messages and whatnot
+as its modified. Simply follow the prompts.
+
+### Documentation
+
+All classes are documented with JavaDoc-style Doxygen comments in their [header files](include/).
+
 ### Graph Data
 
 Data is stored in `./res/` in multiple JSON files. This is the data loaded into the graph initially. SocSim includes
